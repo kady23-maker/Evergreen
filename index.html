@@ -59,7 +59,77 @@ reminding that we're falling back to us, ohhh...`;
     // Menambahkan baris ke dalam kontainer dengan jeda waktu
     function showLines() {
       lines.forEach((line, index) => {
+        const
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto Play Audio with Text Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #1e1e2f;
+      color: #f8f8f8;
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    .text-container {
+      font-size: 1.5rem;
+      line-height: 1.8;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+    }
+    .line {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1.5s forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="text-container" id="textContainer"></div>
+
+  <!-- Elemen Audio -->
+  <audio autoplay loop>
+    <source src="anothermusic.mp3" type="audio/mp3">
+  </audio>
+  
+  <script src="script.js">
+    const text = `see the evergreen up upon the mountain
+be the bigger person stow away the ugliness inside us
+open up a thousand eyes that look upon us
+make them see that we are flying away close to sun,
+oh if only any magical wings could put a hold on any terrible things
+reminding that we're falling back to us, ohhh...`;
+
+    const textContainer = document.getElementById("textContainer");
+
+    // Pisahkan teks menjadi baris-baris
+    const lines = text.split("\n");
+
+    // Menambahkan baris ke dalam kontainer dengan jeda waktu
+    function showLines() {
+      lines.forEach((line, index) => {
         const span = document.createElement("div");
+        span.textContent = line;
+        span.className = "line";
+        span.style.animationDelay = `${index * 3.1}s`; // Jeda 3 detik per baris
+        textContainer.appendChild(span);
+      });
+    }
+    setTimeout(showLines, 28000);
+  </script>
+</body>
+</html>
+nst span = document.createElement("div");
         span.textContent = line;
         span.className = "line";
         span.style.animationDelay = `${index * 3.1}s`; // Jeda 3 detik per baris
